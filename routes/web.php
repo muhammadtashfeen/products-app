@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackendProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +16,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::prefix('backend')->name('backend.')->group(function () {
+
+    Route::resource('products', BackendProductsController::class)->only([
+        'index',
+        'show',
+        'update'
+    ]);
 });
