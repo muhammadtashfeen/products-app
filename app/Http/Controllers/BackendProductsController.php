@@ -6,13 +6,12 @@ use App\Models\Product;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use App\Http\Requests\Backend\ProductUpdateRequest;
-use Illuminate\Support\Facades\Session;
 
 class BackendProductsController extends Controller
 {
     public function index(): View
     {
-        $products = Product::all();
+        $products = Product::paginate(5);
 
         return view('backend.products.index', compact('products'));
     }

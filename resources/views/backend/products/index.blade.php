@@ -52,6 +52,21 @@
                             @endforeach
                         </tbody>
                     </table>
+                    <div class="row mt-2 float-right">
+                        <div class="col-12">
+                            @if ($products->previousPageUrl())
+                            <a href="{{ $products->previousPageUrl() }}" class="btn btn-sm btn-primary btn-inline-block">
+                                Previous
+                            </a>
+                            @endif
+                            @if ($products->nextPageUrl())
+                                <a href="{{ $products->nextPageUrl() }}" class="btn btn-sm btn-primary btn-inline-block">
+                                    Next
+                                </a>
+                            @endif
+
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
