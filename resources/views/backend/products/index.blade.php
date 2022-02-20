@@ -55,12 +55,20 @@
                     <div class="row mt-2 float-right">
                         <div class="col-12">
                             @if ($products->previousPageUrl())
-                            <a href="{{ $products->previousPageUrl() }}" class="btn btn-sm btn-primary btn-inline-block">
-                                Previous
-                            </a>
+                                <a href="{{ $products->previousPageUrl() }}" class="btn btn-sm btn-primary btn-inline-block">
+                                    Previous
+                                </a>
+                            @else
+                                <a href="#" class="btn btn-sm btn-primary btn-inline-block disabled">
+                                    Previous
+                                </a>
                             @endif
                             @if ($products->nextPageUrl())
                                 <a href="{{ $products->nextPageUrl() }}" class="btn btn-sm btn-primary btn-inline-block">
+                                    Next
+                                </a>
+                            @else
+                                <a href="#" class="btn btn-sm btn-primary btn-inline-block disabled">
                                     Next
                                 </a>
                             @endif
