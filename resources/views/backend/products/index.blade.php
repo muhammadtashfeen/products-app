@@ -3,12 +3,16 @@
 @section('title', 'Products Manager')
 
 @section('content')
+<div class="row">
+
+</div>
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Products</h6>
     </div>
     <div class="card-body">
-        <div class="table-responsive">
+        <a href="{{ route('backend.products.create') }}" class="d-inline-block btn btn-primary shadow-sm">Add</a>
+        <div class="table-responsive mt-2">
             <div class="row">
                 <div class="col-sm-12">
                     <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
@@ -35,12 +39,14 @@
                                     <td>{{ $product->title }}</td>
                                     <td>{{ Str::limit($product->description, 60, '...') }}</td>
                                     <td>
-                                        <a href="{{ route('backend.products.show', $product->id) }}" class="btn btn-primary btn-circle">
-                                            <i class="fas fa-pen"></i>
+                                        <a href="{{ route('backend.products.show', $product->id) }}" class="btn btn-sm btn-primary btn-inline-block">
+                                            Edit
                                         </a>
-                                        <a href="#" class="btn btn-danger btn-circle">
-                                            <i class="fas fa-trash"></i>
-                                        </a>
+                                        <form class="d-inline-block" action="{{ route('backend.products.destroy', $product->id) }}" method="post">
+                                            @method('DELETE')
+                                            @csrf
+                                            <button type="submit" class="btn btn-sm btn-xs btn-danger btn-inline-block">Delete</button>
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach

@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('backend.products.index');
 });
 
 Route::prefix('backend')->name('backend.')->group(function () {
@@ -23,6 +23,9 @@ Route::prefix('backend')->name('backend.')->group(function () {
     Route::resource('products', BackendProductsController::class)->only([
         'index',
         'show',
-        'update'
+        'update',
+        'create',
+        'store',
+        'destroy'
     ]);
 });

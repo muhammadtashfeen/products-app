@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Product')
+@section('title', 'Add Product')
 
 @section('content')
     @if (count($errors))
@@ -17,16 +17,15 @@
 
     <div class="card mt-2">
         <div class="card-body">
-            <form method="post" action="{{ route('backend.products.update', $product->id) }}">
-                @method('PUT')
+            <form method="post" action="{{ route('backend.products.store') }}">
                 @csrf
                 <div class="form-group">
-                    <input type="text" name="title" class="form-control" placeholder="Product name" value="{{ $product->title }}">
+                    <input type="text" name="title" class="form-control" placeholder="Product name">
                 </div>
                 <div class="form-group">
-                    <textarea name="description" class="form-control">{{ $product->description }}</textarea>
+                    <textarea name="description" class="form-control" placeholder="Product description goes here..."></textarea>
                 </div>
-                <input class="btn btn-primary shadow-sm" type="submit" value="Update">
+                <input class="d-none d-sm-inline-block btn btn-primary shadow-sm" type="submit" value="Save">
             </form>
         </div>
     </div>
