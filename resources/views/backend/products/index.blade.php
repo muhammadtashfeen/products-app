@@ -18,7 +18,7 @@
                     <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                         <thead>
                             <tr>
-                                <th rowspan="1" colspan="1">Id</th>
+                                <th rowspan="1" colspan="1">Image</th>
                                 <th rowspan="1" colspan="1">Title</th>
                                 <th rowspan="1" colspan="1">Description</th>
                                 <th rowspan="1" colspan="1">Actions</th>
@@ -26,7 +26,7 @@
                         </thead>
                         <tfoot>
                             <tr>
-                                <th rowspan="1" colspan="1">Id</th>
+                                <th rowspan="1" colspan="1">Image</th>
                                 <th rowspan="1" colspan="1">Title</th>
                                 <th rowspan="1" colspan="1">Description</th>
                                 <th rowspan="1" colspan="1">Actions</th>
@@ -35,7 +35,9 @@
                         <tbody>
                             @foreach ($products as $product)
                                 <tr class="odd">
-                                    <td>{{ $product->id }}</td>
+                                    <td>
+                                        <img src="{{ $product->images->first()->path }}" alt="product-image" height="100" width="100">
+                                    </td>
                                     <td>{{ $product->title }}</td>
                                     <td>{{ Str::limit($product->description, 60, '...') }}</td>
                                     <td>
